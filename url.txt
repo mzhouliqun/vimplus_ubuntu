@@ -1,0 +1,8 @@
+nerdtree.zip
+https://codeload.github.com/scrooloose/nerdtree/zip/5.0.0
+
+taglist_46.zip
+https://www.vim.org/scripts/download_script.php?src_id=19574
+
+vimcdoc-2.1.0.zip
+https://codeload.github.com/yianwillis/vimcdoc/zip/v2.1.0

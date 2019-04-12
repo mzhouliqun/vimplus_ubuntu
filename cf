@@ -1,0 +1,9 @@
+#!/bin/bash
+DIR_NUM=$(echo $(pwd) | awk -F '/' '{print $NF}')
+test -f test${DIR_NUM}.c
+if	[ $? != 0 ]
+then
+	vim test$DIR_NUM.c
+else
+	echo -e "\033[32mFile test${DIR_NUM}.c already exists!\033[0m"
+fi

@@ -1,0 +1,519 @@
+" 配色方案
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"colorscheme blue
+"colorscheme darkblue
+"colorscheme default
+"colorscheme delek
+"colorscheme desert
+"colorscheme elflord
+"colorscheme evening
+"colorscheme koehler
+colorscheme molokai
+"colorscheme murphy
+"colorscheme morning
+"colorscheme pablo
+"colorscheme peachpuff
+"colorscheme ron
+"colorscheme shine
+"colorscheme slate
+"colorscheme torte
+"colorscheme zellner
+
+" 编码设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set enc=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+"set termencoding=utf-8
+"set fileencodings=ucs-bom,utf-8,cp936
+"set fileencoding=utf-8
+
+" 语言设置
+set langmenu=zh_CN.UTF-8
+set helplang=cn                                 " 显示中文帮助
+set encoding=utf-8                              " Vim 内部使用的字符编码方式,包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
+
+" 显示相关
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 设定窗口
+"winpos 5 5                                     " 设定窗口位置
+"set lines=40 columns=155                       " 设定窗口大小
+
+" 设置字体
+"set guifont=Courier_New:h10:cANSI
+
+" 用浅色高亮当前行
+autocmd InsertEnter * se cul
+
+" 输入的命令显示出来,看的清楚些
+set showcmd
+
+" 光标移动到buffer的顶部和底部时保持3行距离
+"set scrolloff=3
+
+" 状态行显示的内容
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%y/%m/%d\ -\ %H:%M\")}
+"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+" 启动显示状态行(1),总是显示状态行(2)
+set laststatus=2
+
+"去掉讨厌的有关vi一致性模式,避免以前版本的一些bug和局限
+set nocompatible
+
+" 取消自动添加注释
+"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" vim打开文件时光标返回上次离开的位置
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" 其它设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 设置当文件被改动时自动载入
+set autoread
+
+" quickfix模式
+autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
+
+" 代码补全
+set completeopt=preview,menu
+
+" 共享剪贴板
+set clipboard+=unnamed
+
+" make 运行
+":set makeprg=g++\ -Wall\ \ %
+:set makeprg=gcc\ -Wall\ %\ -o\ %<              " 指定用gcc编译当前文件,其中空格需要用\转义,
+                                                " %表示当前文件名,%<表示不含扩展名的当前文件名.-Wall使能所有警告
+
+set autowrite                                   " 自动保存
+set ruler                                       " 打开状态栏标尺
+set magic                                       " 设置魔术匹配控制,可以通过:h magic查看更详细的帮助信息
+set guioptions-=T                               " 隐藏工具栏
+set guioptions-=m                               " 隐藏菜单栏
+
+" 突出显示当前行等
+"set cursorcolumn                               " 突出显示当前列
+set cursorline                                  " 突出显示当前行
+
+" 代码折叠
+"set foldcolumn=0
+"set foldlevel=3
+"set foldenable                                 " 开始折叠
+"set foldmethod=indent                          " 缩进折叠方法,相同的缩进中代码会被折叠
+                                                " 折叠方法：manual,indent,syntax,marker,diff,expr
+
+" 语法高亮
+set syntax=on
+
+" 错误警告
+set noerrorbells                                " 关闭错误信息响铃
+set novisualbell                                " 关闭使用闪屏代替响铃
+
+" 在处理未保存或只读文件的时候,弹出确认
+set confirm
+
+" 自动缩进                                      " 在Vim中还可以进行自动缩进,主要有cindent、smartindent和autoindent三种
+set autoindent                                  " autoindent 在这种缩进形式中,新增加的行和前一行使用相同的缩进形式
+set cindent                                     " cindent Vim可以很好的识别出C和Java等结构化程序设计语言,
+                                                " 并且能用C语言的缩进格式来处理程序的缩进结构
+
+" 统一缩进为4
+set shiftwidth=4                                " 这个是用于程序中自动缩进所使用的空白长度指示的.一般来说为了保持程序的美观,和下面的参数最好一致
+set tabstop=4                                   " Tab键的宽度
+set softtabstop=4                               " softtabstop是“逢4空格进1制表符
+
+" 不要用空格代替制表符
+set noexpandtab
+
+" 在行和段开始处使用制表符
+set smarttab
+
+" 显示行号
+set number
+
+" 历史记录数
+set history=1000
+
+" 取消备份,视情况自己改
+set nobackup                                    " 从不备份
+set noswapfile                                  " 禁止生成临时文件
+
+" 搜索忽略大小写
+set ignorecase
+
+" 搜索逐字符高亮
+set hlsearch                                    " 高亮search命中的文本
+set incsearch                                   " 随着键入即时搜索
+
+" 行内替换
+set gdefault                                    " g表示global(全局的) - 每一行出现的都被改变,不仅是每一行的第一个
+                                                " 这样做的假设是默认’gdefault‘ 和 ’edcompatible‘ 是关的,所以需要:%s///g使用全局替换
+                                                " 使用:set gdefault时,:%s///是使用全局替换,而:%s///g不是
+
+" 命令行（在状态行下）的高度,默认为1,这里是2
+set cmdheight=2
+
+" 侦测文件类型
+filetype on
+
+" 载入文件类型插件
+filetype plugin on
+
+" 为特定文件类型载入相关缩进文件
+filetype indent on
+
+" 保存全局变量
+set viminfo+=!
+
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+
+" 字符间插入的像素行数目
+set linespace=0
+
+" 增强模式中的命令行自动完成操作
+set wildmenu
+
+" 使回格键（backspace）正常处理indent, eol, start等
+set backspace=2
+
+" 允许backspace和光标键跨越行边界
+"set whichwrap+=<,>,h,l
+
+" 通过使用: commands命令,告诉我们文件的哪一行被改变过
+" 比如dd一行后,会在消息行显示：一行被删除
+set report=0
+
+" 在被分割的窗口间显示空白,便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+
+" 高亮显示匹配的括号
+set showmatch
+
+" 匹配括号高亮的时间（单位是十分之一秒）
+set matchtime=1
+
+" 为C程序提供自动缩进
+set smartindent                                 " smartindent 在这种缩进模式中,每一行都和前一行有相同的缩进量,同时这种缩进形式能正确的识别出花括号,
+                                                " 当遇到右花括号（}）,则取消缩进形式.此外还增加了识别C语言关键字的功能.如果一行是以#开头的,
+                                                " 那么这种格式将会被特殊对待而不采用缩进格式
+
+" 自动补全
+"":inoremap ( ()<ESC>i
+"":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<ESC>O
+":inoremap } <c-r>=ClosePair('}')<CR>
+"":inoremap [ []<ESC>i
+"":inoremap ] <c-r>=ClosePair(']')<CR>
+"":inoremap " ""<ESC>i
+"":inoremap ' ''<ESC>i
+"
+"function! ClosePair(char)
+"	if getline('.')[col('.') - 1] == a:char
+"		return "\<Right>"
+"	else
+"		return a:char
+"	endif
+"endfunction
+filetype plugin indent on                       " 打开文件类型检测, 加了这句才可以用智能补全
+
+" 缩进对齐线
+set completeopt=longest,menu
+
+" 显示tab和空格
+set list
+
+" 设置tab和空格样式
+"set lcs=tab:\|\ ,nbsp:%,trail:-
+"set lcs=tab:\|\ ,nbsp:%,trail:_
+set lcs=tab:\·\ ,nbsp:%,trail:_
+
+" 鼠标设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+" 此配置项有方便的时候也有不好用的时候,自己选择.
+set mouse=a                                     " 点击光标替换, 不好用
+"set mouse-=a                                   " - 则点击光标不会换,用于复制
+set selection=exclusive
+set selectmode=mouse,key
+
+" 鼠标设置开关
+map <F8> :set mouse-=a<CR>
+map <F9> :set mouse=a<CR>
+
+" 新文件标题
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 新建.c,.h,.sh,.java文件,自动插入文件头
+"autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+"" 定义函数SetTitle,自动插入文件头
+"func SetTitle()
+"	"如果文件类型为.sh文件
+"	if &filetype == 'sh'
+"		call setline(1,"\#########################################################################")
+"		call append(line("."), "\# File Name: ".expand("%"))
+"		call append(line(".")+1, "\# Author: Zhou liqun")
+"		call append(line(".")+2, "\# mail: mzhouliqun@163.com")
+"		call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+"		call append(line(".")+4, "\#########################################################################")
+"		call append(line(".")+5, "\#!/bin/bash")
+"		call append(line(".")+6, "")
+"	else
+"		call setline(1, "/*************************************************************************")
+"		call append(line("."), "	> File Name: ".expand("%"))
+"		call append(line(".")+1, "	> Author: Zhou liqun")
+"		call append(line(".")+2, "	> Mail: mzhouliqun@163.com")
+"		call append(line(".")+3, "	> Created Time: ".strftime("%c"))
+"		call append(line(".")+4, "*************************************************************************/")
+"		call append(line(".")+5, "")
+"	endif
+"	if &filetype == 'cpp'
+"		call append(line(".")+6, "#include <iostream>")
+"		call append(line(".")+7, "using namespace std;")
+"		call append(line(".")+8, "")
+"	endif
+"	if &filetype == 'c'
+"		call append(line(".")+6, "#include <stdio.h>")
+"		call append(line(".")+7, "int main (void)")
+"		call append(line(".")+8, "{")
+"		call append(line(".")+9, "	")
+"	endif
+"	"	if &filetype == 'java'
+"	"		call append(line(".")+6,"public class ".expand("%"))
+"	"		call append(line(".")+7,"")
+"	"	endif
+"endfunc
+
+" 新建.c文件,自动插入文件头
+function HeaderC()
+	call setline(1, "#include <stdio.h>")
+	call append(line("."), "int main(void)")
+	call append(line(".")+1, "{")
+	call append(line(".")+2, "	")
+" 新建文件后,自动定位到文件末尾
+	normal G
+endf
+autocmd bufnewfile *.c call HeaderC()
+
+" 新建.py文件,自动插入文件头
+function HeaderPython()
+	call setline(1, "#!/usr/bin/python3")
+"	call append(1, "#-*- coding:utf8 -*-")
+"	call append(2, "# Power by WenBin" . strftime('%Y-%m-%d %T', localtime()))
+	normal G
+"	normal o
+"	normal o
+endf
+autocmd bufnewfile *.py call HeaderPython()
+
+" 新建.sh文件,自动插入文件头
+function HeaderBash()
+	call setline(1, "#!/bin/bash")
+	normal G
+endf
+autocmd bufnewfile *.sh call HeaderBash()
+
+" 键盘命令
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"<Esc>代表Escape键:<CR>代表Enter键；<D>代表Command键。
+"Alt键可以使用<M-key>或<A-key>来表示。<C>代表Ctrl.
+"对于组合键，可以用<C-Esc>代表Ctrl-Esc；使用<S-F1>表示Shift-F1.
+
+" 映射全选+复制 ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+
+" 选中状态下 Ctrl+c 复制
+vmap <C-c> "+y
+
+" 用vim打开一个临时窗口,gt和gT标签页间切换
+map <F3> :tabnew /tmp/temp.txt<CR>
+
+" C,C++ 按F5编译运行
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+"		exec "!g++ % -o %<"
+"		exec "! ./%<"
+		exec "!gcc % -o a.out"
+		exec "! ./a.out"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "! ./%<"
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!java %<"
+	elseif &filetype == 'sh'
+		:!./%
+	elseif &filetype == 'py'
+		exec "!python %"
+		exec "!python %<"
+	endif
+endfunc
+
+" C,C++的调试
+map <F6> :call Rungdb()<CR>
+func! Rungdb()
+	exec "w"
+"	exec "!g++ % -g -o %<"
+"	exec "!gdb ./%<"
+	exec "!gcc % -g -o a.out"
+	exec "!gdb ./a.out"
+endfunc
+
+"" 按F9之后,会新打开一个tab,然后在正常模式执行“+gP,也就是粘贴,
+""接着w！强制写入到/tmp/input_data文件,放到/tmp,无垃圾,绿色环保！
+"map <F9> :call SaveInputData()<CR>
+"func! SaveInputData()
+"	exec "tabnew"
+"	exec 'normal "+gP'
+"	exec "w! /tmp/input_data"
+"endfunc
+"
+"" 网上一般介绍用按键映射gcc编译命令,但这样会有问题,就是无法使用quickfix窗口（参看附录那篇文章的介绍）,
+""也就是出错后我们可以打开quickfix窗口显示出错信息,而不是切换回编辑模式那些出错信息就没了,而且支持直接跳转到出错代码行.
+""我们把按键映射到命令:make即可.而make是根据set makeprg=g++\ %\ -o\ /tmp/a   自动设置编译参数的.生成到/tmp/a,一样环保！
+
+"" 执行文件,将/tmp/input_data的内容作为标准输入
+"map <F8> :call ExecCpp()<CR>
+"func! ExecCpp()
+"	exec "! ./a.out < /tmp/input_data"
+"endfunc
+
+" Taglist设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let Tlist_Show_One_File=1                       "不同时显示多个文件的tag,只显示当前文件的
+let Tlist_Exit_OnlyWindow=1                     "如果taglist窗口是最后一个窗口,则退出vim
+let Tlist_Ctags_Cmd="/usr/bin/ctags"            "将taglist与ctags关联
+let Tlist_Use_Right_Window=1
+map <F12> :Tlist<CR>
+"autocmd vimenter * Tlist
+
+" NERDtee设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDChristmasTree=1
+let NERDTreeAutoCenter=1
+let NERDTreeBookmarksFile=$VIM.'\Data\NerdBookmarks.txt'
+let NERDTreeMouseMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+let NERDTreeWinPos='left'
+let NERDTreeWinSize=31
+"nnoremap f :NERDTreeToggle                     "已经设置F7了就浪费f键了
+map <F7> :NERDTreeMirror<CR>
+map <F7> :NERDTreeToggle<CR>
+"autocmd vimenter * NERDTree
+
+" Ctags设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 按下F4重新生成tag文件,并更新taglist
+map <F4> :!ctags -R --c-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+imap <F4> <ESC>:!ctags -R --c-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+set tags=tags
+set tags+=./tags                                " add current directory's generated tags file
+"set tags+=~/arm/linux-2.6.24.7/tags            " add new tags file(刚刚生成tags的路径,在ctags -R 生成tags文件后,
+                                                " 不要将tags移动到别的目录,否则ctrl+］时,会提示找不到源码文件)
+                                                " set tags+=./tags表示在当前工作目录下搜索tags文件
+                                                " set tags+=~/arm/linux-2.6.24.7/tags表示在搜寻tags文件的时候,
+                                                " 也要搜寻~/arm/linux-2.6.24.7/文件夹下的tags文件.
+                                                " 然后保存并退出vi.这样,你就可以用vim在任意地方查看有关Linux的函数原形
+                                                " tag命令用法：
+                                                " Ctrl＋］  跳到当前光标下单词的标签
+                                                " Ctrl＋O  返回上一个标签
+                                                " Ctrl＋T  返回上一个标签
+                                                " $ vi –t tag (请把tag替换为您欲查找的变量或函数名)
+                                                " :ts(ts助记字：tagslist, “:”开头的命令为VI中命令行模式命令)
+
+" YouCompleteMe设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YCM插件只在打开c和cpp文件时才会被激活
+call plug#begin('~/.vim/plugged')
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',  'for': ['c', 'cpp'] }
+call plug#end()
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+" 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+set completeopt=longest,menu
+
+" 离开插入模式后自动关闭预览窗口
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" 回车即选中当前项
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" 上下左右键的行为 会显示其他信息
+inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" youcompleteme 默认tab s-tab 和自动补全冲突
+" YCM和UltiSnips默认的快捷键都是Tab键,一起使用会有冲突,so,改键
+let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+" 关闭加载.ycm_extra_conf.py提示
+let g:ycm_confirm_extra_conf=0
+
+" 开启 YCM 基于标签引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+
+" 从第2个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+
+" 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
+
+" force recompile with syntastic
+nnoremap <F2> :YcmForceCompileAndDiagnostics<CR>
+
+" open locationlist
+nnoremap <leader>lo :lopen<CR>
+
+" close locationlist
+nnoremap <leader>lc :lclose<CR>
+
+inoremap <leader><leader> <C-x><C-o>
+
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+
+" 在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+
+" 注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+let g:ycm_error_symbol = 'x>'
+let g:ycm_warning_symbol = '!>'
+let g:ycm_add_preview_to_completeopt=1 
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_completion_confirm_key = '<enter>'
+let g:ycm_key_invoke_completion = '<C-p>'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_semantic_triggers = {
+\     'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
+\     'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
+\     'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+\     'lua' : ['.', ':'],
+\     'python' : ['.']
+\}
+let g:ycm_filetype_whitelist = {
+			\ "c":1,
+			\ "cpp":1,
+			\ "sh":1,
+			\}
+
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" 跳转到定义处
+nnoremap <leader>gw :YcmCompleter GoToDefinitionElseDeclaration<CR>

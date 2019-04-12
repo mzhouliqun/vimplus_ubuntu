@@ -1,0 +1,3 @@
+#!/bin/bash
+rm -fvr /root/Desktop/dk
+ln -s $(echo $(pwd)) /root/Desktop/dk
