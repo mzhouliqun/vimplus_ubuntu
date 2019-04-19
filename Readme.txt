@@ -1,2 +1,2 @@
-If you want to install the YCM plugin, execute ycm.sh first, then execute install.sh, and then open the comments about YCM in vimrc.
-If you do not want to install the YCM plugin, execute install.sh directly.
+If you want to install the YCM plugin, execute script install.sh first, then execute script ycm.sh
+If you want to install only vimrc settings, execute only script install.sh
