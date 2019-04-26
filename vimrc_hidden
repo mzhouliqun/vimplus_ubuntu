@@ -102,7 +102,7 @@ set cursorline                                  " 突出显示当前行
 "set foldlevel=3
 "set foldenable                                 " 开始折叠
 "set foldmethod=indent                          " 缩进折叠方法,相同的缩进中代码会被折叠
-                                                " 折叠方法：manual,indent,syntax,marker,diff,expr
+                                                " 折叠方法:manual,indent,syntax,marker,diff,expr
 
 " 语法高亮
 set syntax=on
@@ -122,7 +122,7 @@ set cindent                                     " cindent Vim可以很好的识�
 " 统一缩进为4
 set shiftwidth=4                                " 这个是用于程序中自动缩进所使用的空白长度指示的.一般来说为了保持程序的美观,和下面的参数最好一致
 set tabstop=4                                   " Tab键的宽度
-set softtabstop=4                               " softtabstop是“逢4空格进1制表符
+set softtabstop=4                               " softtabstop是逢4空格进1制表符
 
 " 不要用空格代替制表符
 set noexpandtab
@@ -152,7 +152,7 @@ set gdefault                                    " g表示global(全局的) - 每
                                                 " 这样做的假设是默认’gdefault‘ 和 ’edcompatible‘ 是关的,所以需要:%s///g使用全局替换
                                                 " 使用:set gdefault时,:%s///是使用全局替换,而:%s///g不是
 
-" 命令行（在状态行下）的高度,默认为1,这里是2
+" 命令行(在状态行下)的高度,默认为1,这里是2
 set cmdheight=2
 
 " 侦测文件类型
@@ -176,14 +176,14 @@ set linespace=0
 " 增强模式中的命令行自动完成操作
 set wildmenu
 
-" 使回格键（backspace）正常处理indent, eol, start等
+" 使回格键(backspace)正常处理indent,eol,start等
 set backspace=2
 
 " 允许backspace和光标键跨越行边界
 "set whichwrap+=<,>,h,l
 
-" 通过使用: commands命令,告诉我们文件的哪一行被改变过
-" 比如dd一行后,会在消息行显示：一行被删除
+" 通过使用:commands命令,告诉我们文件的哪一行被改变过
+" 比如dd一行后,会在消息行显示:一行被删除
 set report=0
 
 " 在被分割的窗口间显示空白,便于阅读
@@ -192,12 +192,12 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 高亮显示匹配的括号
 set showmatch
 
-" 匹配括号高亮的时间（单位是十分之一秒）
+" 匹配括号高亮的时间(单位是十分之一秒)
 set matchtime=1
 
 " 为C程序提供自动缩进
 set smartindent                                 " smartindent 在这种缩进模式中,每一行都和前一行有相同的缩进量,同时这种缩进形式能正确的识别出花括号,
-                                                " 当遇到右花括号（}）,则取消缩进形式.此外还增加了识别C语言关键字的功能.如果一行是以#开头的,
+                                                " 当遇到右花括号(}),则取消缩进形式.此外还增加了识别C语言关键字的功能.如果一行是以#开头的,
                                                 " 那么这种格式将会被特殊对待而不采用缩进格式
 
 " 自动补全
@@ -217,7 +217,7 @@ set smartindent                                 " smartindent 在这种缩进模
 "		return a:char
 "	endif
 "endfunction
-filetype plugin indent on                       " 打开文件类型检测, 加了这句才可以用智能补全
+filetype plugin indent on                       " 打开文件类型检测,加了这句才可以用智能补全
 
 " 缩进对齐线
 set completeopt=longest,menu
@@ -232,9 +232,9 @@ set lcs=tab:\·\ ,nbsp:%,trail:_
 
 " 鼠标设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+" 可以在buffer的任何地方使用鼠标(类似office中在工作区双击鼠标定位)
 " 此配置项有方便的时候也有不好用的时候,自己选择.
-set mouse=a                                     " 点击光标替换, 不好用
+set mouse=a                                     " 点击光标替换,不好用
 "set mouse-=a                                   " - 则点击光标不会换,用于复制
 set selection=exclusive
 set selectmode=mouse,key
@@ -316,9 +316,9 @@ autocmd bufnewfile *.sh call HeaderBash()
 
 " 键盘命令
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"<Esc>代表Escape键:<CR>代表Enter键；<D>代表Command键。
-"Alt键可以使用<M-key>或<A-key>来表示。<C>代表Ctrl.
-"对于组合键，可以用<C-Esc>代表Ctrl-Esc；使用<S-F1>表示Shift-F1.
+"<Esc>代表Escape键:<CR>代表Enter键;<D>代表Command键
+"Alt键可以使用<M-key>或<A-key>来表示.<C>代表Ctrl
+"对于组合键,可以用<C-Esc>代表Ctrl-Esc;使用<S-F1>表示Shift-F1
 
 " 映射全选+复制 ctrl+a
 map <C-A> ggVGY
@@ -372,7 +372,7 @@ endfunc
 "	exec "w! /tmp/input_data"
 "endfunc
 "
-"" 网上一般介绍用按键映射gcc编译命令,但这样会有问题,就是无法使用quickfix窗口（参看附录那篇文章的介绍）,
+"" 网上一般介绍用按键映射gcc编译命令,但这样会有问题,就是无法使用quickfix窗口(参看附录那篇文章的介绍),
 ""也就是出错后我们可以打开quickfix窗口显示出错信息,而不是切换回编辑模式那些出错信息就没了,而且支持直接跳转到出错代码行.
 ""我们把按键映射到命令:make即可.而make是根据set makeprg=g++\ %\ -o\ /tmp/a   自动设置编译参数的.生成到/tmp/a,一样环保！
 
@@ -421,99 +421,114 @@ set tags+=./tags                                " add current directory's genera
                                                 " set tags+=~/arm/linux-2.6.24.7/tags表示在搜寻tags文件的时候,
                                                 " 也要搜寻~/arm/linux-2.6.24.7/文件夹下的tags文件.
                                                 " 然后保存并退出vi.这样,你就可以用vim在任意地方查看有关Linux的函数原形
-                                                " tag命令用法：
+                                                " tag命令用法:
                                                 " Ctrl＋］  跳到当前光标下单词的标签
                                                 " Ctrl＋O  返回上一个标签
                                                 " Ctrl＋T  返回上一个标签
                                                 " $ vi –t tag (请把tag替换为您欲查找的变量或函数名)
-                                                " :ts(ts助记字：tagslist, “:”开头的命令为VI中命令行模式命令)
+                                                " :ts(ts助记字:tagslist,“:”开头的命令为VI中命令行模式命令)
 
-"" YouCompleteMe设定
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" YCM插件只在打开c和cpp文件时才会被激活
-"call plug#begin('~/.vim/plugged')
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'for': ['c', 'cpp'] }
-"call plug#end()
-"let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-"
-"" 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
-"set completeopt=longest,menu
-"
-"" 离开插入模式后自动关闭预览窗口
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"
-"" 回车即选中当前项
-""inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-"
-"" 上下左右键的行为 会显示其他信息
-"inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
-"inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
-"inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-"inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-"
-"" youcompleteme 默认tab s-tab 和自动补全冲突
-"" YCM和UltiSnips默认的快捷键都是Tab键,一起使用会有冲突,so,改键
-"let g:ycm_key_list_select_completion=['<c-n>']
-"let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
-"let g:ycm_key_list_previous_completion = ['<Up>']
-"
-"" 关闭加载.ycm_extra_conf.py提示
-"let g:ycm_confirm_extra_conf=0
-"
-"" 开启 YCM 基于标签引擎
-"let g:ycm_collect_identifiers_from_tags_files=1
-"
-"" 从第2个键入字符就开始罗列匹配项
-"let g:ycm_min_num_of_chars_for_completion=1
-"
-"" 禁止缓存匹配项,每次都重新生成匹配项
-"let g:ycm_cache_omnifunc=0
-"
-"" 语法关键字补全
-"let g:ycm_seed_identifiers_with_syntax=1
-"
-"" force recompile with syntastic
-"nnoremap <F2> :YcmForceCompileAndDiagnostics<CR>
-"
-"" open locationlist
-"nnoremap <leader>lo :lopen<CR>
-"
-"" close locationlist
-"nnoremap <leader>lc :lclose<CR>
-"
-"inoremap <leader><leader> <C-x><C-o>
-"
-"" 在注释输入中也能补全
-"let g:ycm_complete_in_comments = 1
-"
-"" 在字符串输入中也能补全
-"let g:ycm_complete_in_strings = 1
-"
-"" 注释和字符串中的文字也会被收入补全
-"let g:ycm_collect_identifiers_from_comments_and_strings = 0
-"
-"let g:ycm_error_symbol = 'x>'
-"let g:ycm_warning_symbol = '!>'
-"let g:ycm_add_preview_to_completeopt=1
-"let g:ycm_autoclose_preview_window_after_completion=1
-"let g:ycm_completion_confirm_key = '<enter>'
-"let g:ycm_key_invoke_completion = '<C-p>'
-"let g:ycm_show_diagnostics_ui = 0
-"let g:ycm_semantic_triggers = {
-"\     'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
-"\     'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
-"\     'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-"\     'lua' : ['.', ':'],
-"\     'python' : ['.']
-"\}
-"let g:ycm_filetype_whitelist = {
-"			\ "c":1,
-"			\ "cpp":1,
-"			\ "sh":1,
-"			\}
-"
-"nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-"nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-"" 跳转到定义处
-"nnoremap <leader>gw :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" YouCompleteMe设定
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YCM插件只在打开c和cpp文件时才会被激活
+call plug#begin('~/.vim/plugged')
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'for': ['c', 'cpp'] }
+call plug#end()
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+" 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+set completeopt=longest,menu
+
+" 离开插入模式后自动关闭预览窗口
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" 回车即选中当前项
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" 上下左右键的行为 会显示其他信息
+inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" youcompleteme 默认tab s-tab 和自动补全冲突
+" YCM和UltiSnips默认的快捷键都是Tab键,一起使用会有冲突,so,改键
+let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+" 关闭加载.ycm_extra_conf.py提示
+let g:ycm_confirm_extra_conf=0
+
+" 开启 YCM 基于标签引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+
+" 从第2个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+
+" 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
+
+" force recompile with syntastic
+nnoremap <F2> :YcmForceCompileAndDiagnostics<CR>
+
+" open locationlist
+nnoremap <leader>lo :lopen<CR>
+
+" close locationlist
+nnoremap <leader>lc :lclose<CR>
+
+inoremap <leader><leader> <C-x><C-o>
+
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+
+" 在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+
+" 注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+" 自动弹出函数原型预览窗口
+let g:ycm_add_preview_to_completeopt=1
+
+" 补全后自动关闭预览窗口
+let g:ycm_autoclose_preview_window_after_completion=1
+
+" 主动补全
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+" 停止显示补全列表(防止列表影响视野),可以按<C-Space>重新弹出
+let g:ycm_key_list_stop_completion = ['<C-y>']
+
+" 禁用语法检查,与syntastic有冲突,建议关闭
+let g:ycm_show_diagnostics_ui = 0
+
+" 设置关健字触发补全
+let g:ycm_semantic_triggers = {
+\     'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
+\     'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
+\     'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+\     'lua' : ['.', ':'],
+\     'python' : ['.']
+\}
+
+" 设置文件类型白名单
+let g:ycm_filetype_whitelist = {
+			\ "c":1,
+			\ "cpp":1,
+			\ "sh":1,
+			\}
+
+" YCM可以打开location-list来显示警告和错误的信息:YcmDiags
+let g:ycm_error_symbol = 'x>'
+let g:ycm_warning_symbol = '!>'
+
+" 跳转到定义处或声明处
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gw :YcmCompleter GoToDefinitionElseDeclaration<CR>
