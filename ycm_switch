@@ -1,0 +1,20 @@
+#!/bin/bash
+FILENAME=/root/.vimrc
+STRING='\" YouCompleteMe'
+turnon() {
+	sed -i '/\" YouCompleteMe/,$s/^\"//' $1
+}
+
+turnoff() {
+	sed -i '/\" YouCompleteMe/,$s/^.*/\"&/' $1
+}
+
+str=$(cat $FILENAME | grep plug\#end | awk '{print substr($1,1,1)}')
+if [ "$str"x = "\""x ]
+then
+	turnon $FILENAME
+	echo -e "\033[32mYCM plugin has been opened.\033[0m"
+else
+	turnoff $FILENAME
+	echo -e "\033[32mYCM plugin has been closed.\033[0m"
+fi
