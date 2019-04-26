@@ -22,15 +22,16 @@ else
 	echo "\033[32mVim version number is $VIM_VERSION, check OK.\033[0m"
 fi
 
-cp /etc/vim/vimrc /etc/vim/vimrc.$(date +%Y%m%d).bak
-\cp vimrc_global /etc/vim/vimrc
-
-cat /etc/vim/vimrc | grep autocmd | grep formatoptions > /dev/null 2>&1
-if [ "$?" != "0" ]; then
-	echo 'autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o' >> /etc/vim/vimrc
+BOOL_1=$(md5sum /etc/vim/vimrc | awk '{print $1}')
+BOOL_2=$(md5sum vimrc_global | awk '{print $1}')
+if [ "$BOOL_1"x = "$BOOL_2"x ]; then
+	echo "\033[32mThe file /etc/vim/vimrc has not been changed.\033[0m"
+else
+	\cp /etc/vim/vimrc /etc/vim/vimrc.$(date +%Y%m%d_%H%M).bak
+	\cp vimrc_global /etc/vim/vimrc
 fi
 
-cp vimrc_hidden /root/.vimrc
+\cp vimrc_hidden /root/.vimrc
 
 [ -d "~/.vim/" ] || mkdir -p ~/.vim/
 [ -d "~/.vim/doc/" ] || mkdir -p ~/.vim/doc/
@@ -42,32 +43,32 @@ cp vimrc_hidden /root/.vimrc
 unzip -d ./temp/ -o nerdtree-5.0.0.zip > /dev/null 2>&1
 unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 unzip -d ./temp/ -o vimcdoc-2.1.0.zip > /dev/null 2>&1
-cp ./temp/nerdtree-5.0.0/doc/* ~/.vim/doc/
-cp ./temp/nerdtree-5.0.0/plugin/* ~/.vim/plugin/
-cp ./temp/nerdtree-5.0.0/syntax/* ~/.vim/syntax/
-cp -a ./temp/nerdtree-5.0.0/nerdtree_plugin/ ~/.vim/
-cp -a ./temp/nerdtree-5.0.0/autoload/* ~/.vim/autoload
-cp -a ./temp/nerdtree-5.0.0/lib/* ~/.vim/lib
-cp ./temp/taglist_46/doc/* ~/.vim/doc
-cp ./temp/taglist_46/plugin/* ~/.vim/plugin
+\cp ./temp/nerdtree-5.0.0/doc/* ~/.vim/doc/
+\cp ./temp/nerdtree-5.0.0/plugin/* ~/.vim/plugin/
+\cp ./temp/nerdtree-5.0.0/syntax/* ~/.vim/syntax/
+\cp -a ./temp/nerdtree-5.0.0/nerdtree_plugin/ ~/.vim/
+\cp -a ./temp/nerdtree-5.0.0/autoload/* ~/.vim/autoload
+\cp -a ./temp/nerdtree-5.0.0/lib/* ~/.vim/lib
+\cp ./temp/taglist_46/doc/* ~/.vim/doc
+\cp ./temp/taglist_46/plugin/* ~/.vim/plugin
 cd ./temp/vimcdoc-2.1.0/; sh vimcdoc.sh -i > /dev/null 2>&1; cd ../../
 
-cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
+\cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
-cp cf jr pw ycm_switch /usr/local/bin/
+\cp cf jr pw ycm_switch /usr/local/bin/
 for SCRIPT in cf jr pw ycm_switch
 do
 	chmod +x /usr/local/bin/$SCRIPT
 done
 
-BOOL_1=$(md5sum /root/.bashrc | awk '{print $1}')
-BOOL_2=$(md5sum bashrc_tmpl | awk '{print $1}')
-if [ "$BOOL_1"x = "$BOOL_2"x ]; then
+BOOL_3=$(md5sum /root/.bashrc | awk '{print $1}')
+BOOL_4=$(md5sum bashrc_tmpl | awk '{print $1}')
+if [ "$BOOL_3"x = "$BOOL_4"x ]; then
 	echo "\033[32mThe file bashrc has not been changed.\033[0m"
 else
-	cp /root/.bashrc /root/.bashrc.$(date +%Y%m%d_%H%M).bak
-	cp bashrc_tmpl /root/.bashrc
+	\cp /root/.bashrc /root/.bashrc.$(date +%Y%m%d_%H%M).bak
+	\cp bashrc_tmpl /root/.bashrc
 fi
 dpkg -l | grep ctags > /dev/null 2>&1
 if [ "$?" != "0" ]; then
