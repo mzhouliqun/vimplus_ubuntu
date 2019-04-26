@@ -55,13 +55,16 @@ cd ./temp/vimcdoc-2.1.0/; sh vimcdoc.sh -i > /dev/null 2>&1; cd ../../
 cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
-cp cf jr pw rg /usr/local/bin/
-chmod +x /usr/local/bin/*
+cp cf jr pw ycm_switch /usr/local/bin/
+for SCRIPT in cf jr pw ycm_switch
+do
+	chmod +x /usr/local/bin/$SCRIPT
+done
 
 BOOL_1=$(md5sum /root/.bashrc | awk '{print $1}')
 BOOL_2=$(md5sum bashrc_tmpl | awk '{print $1}')
 if [ "$BOOL_1"x = "$BOOL_2"x ]; then
-	echo "\033[32mThe file bashrc has not changed.\033[0m"
+	echo "\033[32mThe file bashrc has not been changed.\033[0m"
 else
 	cp /root/.bashrc /root/.bashrc.$(date +%Y%m%d_%H%M).bak
 	cp bashrc_tmpl /root/.bashrc
