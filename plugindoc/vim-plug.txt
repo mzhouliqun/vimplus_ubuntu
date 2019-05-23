@@ -14,6 +14,18 @@ $ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuse
 安装插件
 要安装插件，你必须如下所示首先在 Vim 配置文件中声明它们。一般 Vim 的配置文件是 ~/.vimrc，Neovim 的配置文件是 ~/.config/nvim/init.vim。请记住，当你在配置文件中声明插件时，列表应该以 call plug#begin(PLUGIN_DIRECTORY) 开始，并以 plug#end() 结束。
 
+安装好后编辑.vimrc文件
+
+sudo vim ~/.vimrc
+
+输入两行：
+
+call plug#begin()
+
+call plug#end()
+
+之后要应用的插件直接写到这两行中间即可。
+
 例如，我们安装 “lightline.vim” 插件。为此，请在 ~/.vimrc 的顶部添加以下行。
 
 call plug#begin('~/.vim/plugged')
