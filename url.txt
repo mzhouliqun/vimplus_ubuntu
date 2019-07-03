@@ -1,5 +1,5 @@
 nerdtree.zip
-https://codeload.github.com/scrooloose/nerdtree/zip/5.0.0
+https://github.com/scrooloose/nerdtree
 
 taglist_46.zip
 https://www.vim.org/scripts/download_script.php?src_id=19574

@@ -40,15 +40,15 @@ fi
 [ -d "~/.vim/autoload/" ] || mkdir -p ~/.vim/autoload/
 [ -d "~/.vim/lib/" ] || mkdir -p ~/.vim/lib/
 [ -d "temp" ] || mkdir temp
-unzip -d ./temp/ -o nerdtree-5.0.0.zip > /dev/null 2>&1
+unzip -d ./temp/ -o nerdtree-master.zip > /dev/null 2>&1
 unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 unzip -d ./temp/ -o vimcdoc-2.1.0.zip > /dev/null 2>&1
-\cp ./temp/nerdtree-5.0.0/doc/* ~/.vim/doc/
-\cp ./temp/nerdtree-5.0.0/plugin/* ~/.vim/plugin/
-\cp ./temp/nerdtree-5.0.0/syntax/* ~/.vim/syntax/
-\cp -a ./temp/nerdtree-5.0.0/nerdtree_plugin/ ~/.vim/
-\cp -a ./temp/nerdtree-5.0.0/autoload/* ~/.vim/autoload
-\cp -a ./temp/nerdtree-5.0.0/lib/* ~/.vim/lib
+\cp ./temp/nerdtree-master/doc/* ~/.vim/doc/
+\cp ./temp/nerdtree-master/plugin/* ~/.vim/plugin/
+\cp ./temp/nerdtree-master/syntax/* ~/.vim/syntax/
+\cp -a ./temp/nerdtree-master/nerdtree_plugin/ ~/.vim/
+\cp -a ./temp/nerdtree-master/autoload/* ~/.vim/autoload
+\cp -a ./temp/nerdtree-master/lib/* ~/.vim/lib
 \cp ./temp/taglist_46/doc/* ~/.vim/doc
 \cp ./temp/taglist_46/plugin/* ~/.vim/plugin
 cd ./temp/vimcdoc-2.1.0/; sh vimcdoc.sh -i > /dev/null 2>&1; cd ../../
