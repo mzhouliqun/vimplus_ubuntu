@@ -32,6 +32,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
+已知 https://github.com/sukima/vim-tiddlywiki 是插件的话，写 Plug 'sukima/vim-tiddlywiki' 即可
+
 在 vim 配置文件中添加上面的行后，通过输入以下命令重新加载：
 
 :source ~/.vimrc

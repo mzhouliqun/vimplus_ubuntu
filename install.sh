@@ -36,22 +36,10 @@ fi
 [ -d "~/.vim/" ] || mkdir -p ~/.vim/
 [ -d "~/.vim/doc/" ] || mkdir -p ~/.vim/doc/
 [ -d "~/.vim/plugin/" ] || mkdir -p ~/.vim/plugin/
-[ -d "~/.vim/syntax/" ] || mkdir -p ~/.vim/syntax/
-[ -d "~/.vim/autoload/" ] || mkdir -p ~/.vim/autoload/
-[ -d "~/.vim/lib/" ] || mkdir -p ~/.vim/lib/
 [ -d "temp" ] || mkdir temp
-unzip -d ./temp/ -o nerdtree-6.1.1.zip > /dev/null 2>&1
 unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
-unzip -d ./temp/ -o vimcdoc-2.1.0.zip > /dev/null 2>&1
-\cp ./temp/nerdtree-6.1.1/doc/* ~/.vim/doc/
-\cp ./temp/nerdtree-6.1.1/plugin/* ~/.vim/plugin/
-\cp ./temp/nerdtree-6.1.1/syntax/* ~/.vim/syntax/
-\cp -a ./temp/nerdtree-6.1.1/nerdtree_plugin/ ~/.vim/
-\cp -a ./temp/nerdtree-6.1.1/autoload/* ~/.vim/autoload
-\cp -a ./temp/nerdtree-6.1.1/lib/* ~/.vim/lib
 \cp ./temp/taglist_46/doc/* ~/.vim/doc
 \cp ./temp/taglist_46/plugin/* ~/.vim/plugin
-cd ./temp/vimcdoc-2.1.0/; sh vimcdoc.sh -i > /dev/null 2>&1; cd ../../
 
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
@@ -75,4 +63,8 @@ if [ "$?" != "0" ]; then
 	apt-get install -y ctags  > /dev/null 2>&1
 fi
 rm -fr ./temp > /dev/null 2>&1
+echo "\033[32mThe installation is almost complete.\033[0m"
+echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install nerdtree plugin.\033[0m'
+ls ~/.vim/plugged | grep -iw nerdtree
+if [ "$?" == "0" ]; then
 echo "\033[32mThe installation is complete.\033[0m"

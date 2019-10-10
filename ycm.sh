@@ -9,14 +9,14 @@ apt-get install python-pip curl git libncurses5-dev python-dev python3-dev build
 FILENAME=/root/.vimrc
 STRING='\" YouCompleteMe'
 turnon() {
-	sed -i '/\" YouCompleteMe/,$s/^\"//' $1
+	sed -i '/Valloric\/YouCompleteMe/s/^\"//' $1
 }
 
 turnoff() {
-	sed -i '/\" YouCompleteMe/,$s/^.*/\"&/' $1
+	sed -i '/Valloric\/YouCompleteMe/s/^.*$/\"&/' $1
 }
 
-str=$(cat $FILENAME | grep plug\#end | awk '{print substr($1,1,1)}')
+str=$(cat $FILENAME | grep Valloric/YouCompleteMe | awk '{print substr($1,1,1)}')
 if [ "$str" != "\"" ]
 then
 	turnoff $FILENAME
@@ -25,4 +25,3 @@ fi
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 turnon $FILENAME
 echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install YCM.\033[0m'
-echo '\033[32mIf installation fails, execute "/root/.vim/plugged/YouCompleteMe/install.py to reinstall the YCM plug-in"\033[0m'

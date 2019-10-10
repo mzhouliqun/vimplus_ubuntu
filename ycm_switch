@@ -2,14 +2,14 @@
 FILENAME=/root/.vimrc
 STRING='\" YouCompleteMe'
 turnon() {
-	sed -i '/\" YouCompleteMe/,$s/^\"//' $1
+	sed -i '/Valloric\/YouCompleteMe/s/^\"//' $1
 }
 
 turnoff() {
-	sed -i '/\" YouCompleteMe/,$s/^.*/\"&/' $1
+	sed -i '/Valloric\/YouCompleteMe/s/^.*$/\"&/' $1
 }
 
-str=$(cat $FILENAME | grep plug\#end | awk '{print substr($1,1,1)}')
+str=$(cat $FILENAME | grep Valloric/YouCompleteMe | awk '{print substr($1,1,1)}')
 if [ "$str"x = "\""x ]
 then
 	turnon $FILENAME
