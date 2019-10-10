@@ -59,12 +59,23 @@ else
 	\cp bashrc_tmpl /root/.bashrc
 fi
 dpkg -l | grep ctags > /dev/null 2>&1
+#if [ "$?" != "0" ]; then
+#	apt-get install -y ctags  > /dev/null 2>&1
+#fi
+apt-get install ctags curl -y > /dev/null 2>&1
 if [ "$?" != "0" ]; then
-	apt-get install -y ctags  > /dev/null 2>&1
+	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
+	exit 1
 fi
 rm -fr ./temp > /dev/null 2>&1
-echo "\033[32mThe installation is almost complete.\033[0m"
-echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install nerdtree plugin.\033[0m'
-ls ~/.vim/plugged | grep -iw nerdtree
-if [ "$?" == "0" ]; then
+
+# Install vim-plug
+if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
+	 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1
+fi
+
+[ ! -d "/root/.vim/plugged/nerdtree" ] && \
+	echo "\033[32mThe installation is almost complete.\033[0m" && \
+	echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install nerdtree plugin.\033[0m' && \
+	exit 0
 echo "\033[32mThe installation is complete.\033[0m"
