@@ -62,7 +62,7 @@ dpkg -l | grep ctags > /dev/null 2>&1
 #if [ "$?" != "0" ]; then
 #	apt-get install -y ctags  > /dev/null 2>&1
 #fi
-apt-get install ctags curl -y > /dev/null 2>&1
+apt-get install ctags curl git -y > /dev/null 2>&1
 if [ "$?" != "0" ]; then
 	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
 	exit 1
