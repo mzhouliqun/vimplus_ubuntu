@@ -245,7 +245,9 @@ set selectmode=mouse,key
 
 " 鼠标设置开关
 map <F8> :set mouse-=a<CR>
+map! <F8> <Esc>:set mouse-=a<CR>a
 map <F9> :set mouse=a<CR>
+map! <F9> <Esc>:set mouse=a<CR>a
 
 " 新文件标题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -333,6 +335,10 @@ vmap <C-c> "+y
 
 " 用vim打开一个临时窗口,gt和gT标签页间切换
 map <F3> :tabnew /tmp/temp.txt<CR>
+map! <F3> <Esc>:tabnew /tmp/temp.txt<CR>
+
+" 插入模式下ctrl+d删除整行
+imap <c-d> <esc>ddi
 
 " C,C++ 按F5编译运行
 map <F5> :call CompileRunGcc()<CR>
@@ -393,6 +399,7 @@ let Tlist_Exit_OnlyWindow=1                     "如果taglist窗口是最后一
 let Tlist_Ctags_Cmd="/usr/bin/ctags"            "将taglist与ctags关联
 let Tlist_Use_Right_Window=1
 map <F12> :Tlist<CR>
+map! <F12> <Esc>:Tlist<CR>a
 "autocmd vimenter * Tlist
 
 " NERDtee设定
