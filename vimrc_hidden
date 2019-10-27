@@ -23,9 +23,6 @@ colorscheme molokai
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set enc=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-"set termencoding=utf-8
-"set fileencodings=ucs-bom,utf-8,cp936
-"set fileencoding=utf-8
 
 " 语言设置
 set langmenu=zh_CN.UTF-8
@@ -37,9 +34,6 @@ set encoding=utf-8                              " Vim 内部使用的字符编�
 " 设定窗口
 "winpos 5 5                                     " 设定窗口位置
 "set lines=40 columns=155                       " 设定窗口大小
-
-" 设置字体
-"set guifont=Courier_New:h10:cANSI
 
 " 用浅色高亮当前行
 autocmd InsertEnter * se cul
@@ -251,46 +245,6 @@ map! <F9> <Esc>:set mouse=a<CR>a
 
 " 新文件标题
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 新建.c,.h,.sh,.java文件,自动插入文件头
-"autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
-"" 定义函数SetTitle,自动插入文件头
-"func SetTitle()
-"	"如果文件类型为.sh文件
-"	if &filetype == 'sh'
-"		call setline(1,"\#########################################################################")
-"		call append(line("."), "\# File Name: ".expand("%"))
-"		call append(line(".")+1, "\# Author: Zhou liqun")
-"		call append(line(".")+2, "\# mail: mzhouliqun@163.com")
-"		call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-"		call append(line(".")+4, "\#########################################################################")
-"		call append(line(".")+5, "\#!/bin/bash")
-"		call append(line(".")+6, "")
-"	else
-"		call setline(1, "/*************************************************************************")
-"		call append(line("."), "	> File Name: ".expand("%"))
-"		call append(line(".")+1, "	> Author: Zhou liqun")
-"		call append(line(".")+2, "	> Mail: mzhouliqun@163.com")
-"		call append(line(".")+3, "	> Created Time: ".strftime("%c"))
-"		call append(line(".")+4, "*************************************************************************/")
-"		call append(line(".")+5, "")
-"	endif
-"	if &filetype == 'cpp'
-"		call append(line(".")+6, "#include <iostream>")
-"		call append(line(".")+7, "using namespace std;")
-"		call append(line(".")+8, "")
-"	endif
-"	if &filetype == 'c'
-"		call append(line(".")+6, "#include <stdio.h>")
-"		call append(line(".")+7, "int main (void)")
-"		call append(line(".")+8, "{")
-"		call append(line(".")+9, "	")
-"	endif
-"	"	if &filetype == 'java'
-"	"		call append(line(".")+6,"public class ".expand("%"))
-"	"		call append(line(".")+7,"")
-"	"	endif
-"endfunc
-
 " 新建.c文件,自动插入文件头
 function HeaderC()
 	call setline(1, "#include <stdio.h>")
@@ -308,7 +262,6 @@ function HeaderPython()
 "	call append(1, "#-*- coding:utf8 -*-")
 "	call append(2, "# Power by WenBin" . strftime('%Y-%m-%d %T', localtime()))
 	normal G
-"	normal o
 "	normal o
 endf
 autocmd bufnewfile *.py call HeaderPython()
@@ -414,7 +367,6 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=31
-"nnoremap f :NERDTreeToggle                     "已经设置F7了就浪费f键了
 map <F7> :NERDTreeMirror<CR>
 map <F7> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree
