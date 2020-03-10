@@ -509,4 +509,5 @@ call plug#begin('~/.vim/plugged')
 
 " 使用vim-plug插件管理器安装nerdtree插件
 Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/taglist.vim'
 call plug#end()

@@ -34,12 +34,6 @@ fi
 \cp vimrc_hidden /root/.vimrc
 
 [ -d "~/.vim/" ] || mkdir -p ~/.vim/
-[ -d "~/.vim/doc/" ] || mkdir -p ~/.vim/doc/
-[ -d "~/.vim/plugin/" ] || mkdir -p ~/.vim/plugin/
-[ -d "temp" ] || mkdir temp
-unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
-\cp ./temp/taglist_46/doc/* ~/.vim/doc
-\cp ./temp/taglist_46/plugin/* ~/.vim/plugin
 
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
@@ -67,7 +61,6 @@ if [ "$?" != "0" ]; then
 	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
 	exit 1
 fi
-rm -fr ./temp > /dev/null 2>&1
 
 # Install vim-plug
 if [ ! -f "/root/.vim/autoload/plug.vim" ]; then

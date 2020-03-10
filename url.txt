@@ -3,6 +3,7 @@ https://github.com/scrooloose/nerdtree
 
 taglist_46.zip
 https://www.vim.org/scripts/download_script.php?src_id=19574
+https://github.com/vim-scripts/taglist.vim
 
 vimcdoc-2.1.0.zip
 https://codeload.github.com/yianwillis/vimcdoc/zip/v2.1.0
