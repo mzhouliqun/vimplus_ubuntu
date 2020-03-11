@@ -1,4 +1,16 @@
 #!/bin/bash
+apt-get install ctags curl git -y > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
+	exit 1
+fi
+
+curl -I https://github.com > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+	echo "\033[31mERROR! Unable to access github.com.\033[0m"
+	exit 1
+fi
+
 VIM_VERSION=$(echo `ls /usr/share/vim` | awk '{
 string=$0
 len=length(string)
@@ -34,7 +46,12 @@ fi
 \cp vimrc_hidden /root/.vimrc
 
 [ -d "~/.vim/" ] || mkdir -p ~/.vim/
-
+[ -d "~/.vim/doc/" ] || mkdir -p ~/.vim/doc/
+[ -d "~/.vim/plugin/" ] || mkdir -p ~/.vim/plugin/
+[ -d "temp" ] || mkdir temp
+unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
+\cp ./temp/taglist_46/doc/* ~/.vim/doc
+\cp ./temp/taglist_46/plugin/* ~/.vim/plugin
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
@@ -52,23 +69,20 @@ else
 	\cp /root/.bashrc /root/.bashrc.$(date +%Y%m%d_%H%M).bak
 	\cp bashrc_tmpl /root/.bashrc
 fi
-dpkg -l | grep ctags > /dev/null 2>&1
+#dpkg -l | grep ctags > /dev/null 2>&1
 #if [ "$?" != "0" ]; then
 #	apt-get install -y ctags  > /dev/null 2>&1
 #fi
-apt-get install ctags curl git -y > /dev/null 2>&1
-if [ "$?" != "0" ]; then
-	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
-	exit 1
-fi
+
+rm -fr ./temp > /dev/null 2>&1
 
 # Install vim-plug
 if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
 	 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1
 fi
 
-[ ! -d "/root/.vim/plugged/nerdtree" ] && \
-	echo "\033[32mThe installation is almost complete.\033[0m" && \
-	echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install nerdtree plugin.\033[0m' && \
-	exit 0
-echo "\033[32mThe installation is complete.\033[0m"
+echo "\033[32mThe installation is almost complete.\033[0m"
+echo 'Please ignore the above error reporting about the plug-in.
+Now type ":PlugInstall" to install the nerdtree plug-in.
+when the plug-in installation is complete ,type :qall! to exit vim.' | vim -
+echo "\033[32mThe installation is successful.\033[0m"

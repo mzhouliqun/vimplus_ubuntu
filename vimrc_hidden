@@ -350,7 +350,9 @@ endfunc
 let Tlist_Show_One_File=1                       "不同时显示多个文件的tag,只显示当前文件的
 let Tlist_Exit_OnlyWindow=1                     "如果taglist窗口是最后一个窗口,则退出vim
 let Tlist_Ctags_Cmd="/usr/bin/ctags"            "将taglist与ctags关联
-let Tlist_Use_Right_Window=1
+let Tlist_Use_Right_Window=1                    "taglist窗口的位置
+"let Tlist_WinHeight=100                        "taglist窗口的高度,测试没效果
+let Tlist_WinWidth=40                           "taglist窗口的宽度
 map <F12> :Tlist<CR>
 map! <F12> <Esc>:Tlist<CR>a
 "autocmd vimenter * Tlist
@@ -509,5 +511,5 @@ call plug#begin('~/.vim/plugged')
 
 " 使用vim-plug插件管理器安装nerdtree插件
 Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/taglist.vim'
+"""Plug 'vim-scripts/taglist.vim'               " 默认不使用vim-plug安装taglist
 call plug#end()
