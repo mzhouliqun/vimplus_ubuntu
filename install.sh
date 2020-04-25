@@ -8,7 +8,7 @@ fi
 curl -I https://github.com > /dev/null 2>&1
 if [ "$?" != "0" ]; then
 	echo "\033[31mERROR! Unable to access github.com.\033[0m"
-	exit 1
+	exit 2
 fi
 
 VIM_VERSION=$(echo `ls /usr/share/vim` | awk '{
@@ -29,7 +29,7 @@ for (i=1; i<=length($0); i+=1)
 printf substr($0,i,1)" "
 print ""}' | awk '{print $1}')
 if [ -z "$VIM_VERSION" ]; then
-	echo "\033[31mERROR! The VIM version number cannot be detected.\033[0m" && exit 1
+	echo "\033[31mERROR! The VIM version number cannot be detected.\033[0m" && exit 3
 else
 	echo "\033[32mVim version number is $VIM_VERSION, check OK.\033[0m"
 fi
@@ -79,6 +79,10 @@ rm -fr ./temp > /dev/null 2>&1
 # Install vim-plug
 if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
 	 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1
+	 if [ "$?" != "0" ]; then
+		 echo "\033[31mVim-plug installation failed\033[0m"
+		 exit 4
+	 fi
 fi
 
 echo "\033[32mThe installation is almost complete.\033[0m"

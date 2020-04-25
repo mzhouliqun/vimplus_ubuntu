@@ -3,7 +3,8 @@
 apt-get update
 apt-get install gcc g++ make -y
 apt-get install vim vim-gtk3 vim-tiny neovim vim-athena vim-gtk vim-nox -y
-apt-get install python-pip curl git libncurses5-dev python-dev python3-dev build-essential cmake clang libclang-dev -y
+apt-get install curl git libncurses5-dev python-dev python3-dev build-essential cmake clang libclang-dev python3-pip -y
+apt-get install python-dev-is-python2 -y
 
 FILENAME=/root/.vimrc
 STRING='\" YouCompleteMe'
