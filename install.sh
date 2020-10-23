@@ -1,5 +1,5 @@
 #!/bin/bash
-apt-get install ctags curl git -y > /dev/null 2>&1
+apt-get install universal-ctags curl git -y > /dev/null 2>&1
 if [ "$?" != "0" ]; then
 	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
 	exit 1
@@ -83,6 +83,7 @@ if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		if [ "$?" != "0" ]; then
 			echo "\033[31mVim-plug installation failed\033[0m"
+			echo "\033[31mExecute 'echo \"199.232.28.133 raw.githubusercontent.com\" >> /etc/hosts', and then execute install script again may help.\033[0m"
 			exit 4
 		fi
 	 fi
