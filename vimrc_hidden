@@ -357,6 +357,12 @@ map <F12> :Tlist<CR>
 map! <F12> <Esc>:Tlist<CR>a
 "autocmd vimenter * Tlist
 
+" 打开C文件时自动开启Taglist
+autocmd vimenter *.c Tlist
+
+" 打开H文件时自动开启Taglist
+autocmd vimenter *.h Tlist
+
 " NERDtee设定
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDChristmasTree=1

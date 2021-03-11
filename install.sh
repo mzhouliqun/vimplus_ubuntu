@@ -52,6 +52,7 @@ fi
 unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 \cp ./temp/taglist_46/doc/* ~/.vim/doc
 \cp ./temp/taglist_46/plugin/* ~/.vim/plugin
+\cp taglist_o2wtq.vim ~/.vim/plugin/taglist.vim
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
