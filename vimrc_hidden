@@ -373,6 +373,22 @@ map <F7> :NERDTreeMirror<CR>
 map <F7> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree
 
+" 打开C文件时自动开启NERDTree
+autocmd VimEnter *.c NERDTree
+wincmd w
+autocmd VimEnter *.c wincmd w
+
+" 打开H文件时自动开启NERDTree
+autocmd VimEnter *.h NERDTree
+wincmd w
+autocmd VimEnter *.h wincmd w
+
+" 打开vim时如果没有文件自动打开NERDTree
+autocmd vimenter * if !argc()|NERDTree|
+
+" 当NERDTree为剩下的唯一窗口时自动关闭
+autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Ctags设定
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 按下F4重新生成tag文件,并更新taglist
