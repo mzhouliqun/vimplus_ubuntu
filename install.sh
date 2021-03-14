@@ -52,12 +52,11 @@ fi
 unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 \cp ./temp/taglist_46/doc/* ~/.vim/doc
 \cp ./temp/taglist_46/plugin/* ~/.vim/plugin
-\cp taglist_o2wtq.vim ~/.vim/plugin/taglist.vim
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
-\cp cf jr pw ycm_switch /usr/local/bin/
-for SCRIPT in cf jr pw ycm_switch
+\cp cf jr pw ycm nt /usr/local/bin/
+for SCRIPT in cf jr pw ycm nt
 do
 	chmod +x /usr/local/bin/$SCRIPT
 done
@@ -90,6 +89,7 @@ if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
 	 fi
 fi
 
+/usr/bin/bash /usr/local/bin/nt > /dev/null 2>&1
 echo "\033[32mThe installation is almost complete.\033[0m"
 echo 'Please ignore the above error reporting about the plug-in.
 Now type ":PlugInstall" to install the nerdtree plug-in.

@@ -1,0 +1,27 @@
+#!/bin/bash
+FILENAME1=/root/.vimrc
+FILENAME2=/root/.vim/plugin/taglist.vim
+STRING='autocmd\ VimEnter\ \*\.c\ Tlist'
+
+turnon() {
+	sed -i '/^\"autocmd\ VimEnter\ \*\.[ch]/s/\"//g' $1
+	sed -i '/^\"wincmd\ w/s/\"//g' $1
+	sed -i '/\tif\ winbufnr(2)\ ==\ -1/s/2/3/g' $2
+}
+
+turnoff() {
+	sed -i 's/^autocmd\ VimEnter\ \*\.[ch]/\"&/g' $1
+	sed -i 's/^wincmd\ w/\"&/g' $1
+	sed -i '/\tif\ winbufnr(3)\ ==\ -1/s/3/2/g' $2
+}
+
+str=$(cat /root/.vimrc | grep 'autocmd\ VimEnter\ \*\.c\ Tlist' | awk '{print substr($1,1,1)}')
+
+if [ "$str"x = "\""x ]
+then
+	turnon $FILENAME1 $FILENAME2
+	echo -e "\033[32mNt has been opened.\033[0m"
+else
+	turnoff $FILENAME1 $FILENAME2
+	echo -e "\033[32mNt has been closed.\033[0m"
+fi
