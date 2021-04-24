@@ -78,15 +78,11 @@ rm -fr ./temp > /dev/null 2>&1
 
 # Install vim-plug
 if [ ! -f "/root/.vim/autoload/plug.vim" ]; then
-	 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	 if [ "$?" != "0" ]; then
-		curl -fLo ~/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		if [ "$?" != "0" ]; then
-			echo "\033[31mVim-plug installation failed\033[0m"
-			echo "\033[31mExecute 'echo \"199.232.28.133 raw.githubusercontent.com\" >> /etc/hosts', and then execute install script again may help.\033[0m"
-			exit 4
-		fi
-	 fi
+#	 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	mkdir -p ~/.vim/autoload/
+	git clone https://github.com/junegunn/vim-plug.git > /dev/null 2>&1
+	\cp vim-plug/plug.vim ~/.vim/autoload/
+	rm -fr vim-plug
 fi
 
 /usr/bin/bash /usr/local/bin/nt > /dev/null 2>&1
