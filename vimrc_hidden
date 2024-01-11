@@ -223,10 +223,10 @@ set completeopt=longest,menu
 " 显示tab和空格
 set list
 
-" 设置tab和空格样式
+" 设置tab和空格样式· ┆ ┊ ⋮ ⁞ ¦
 "set lcs=tab:\|\ ,nbsp:%,trail:-
 "set lcs=tab:\|\ ,nbsp:%,trail:_
-set lcs=tab:\·\ ,nbsp:%,trail:_
+set lcs=tab:\⁞\ ,nbsp:%,trail:_
 
 " 鼠标设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
