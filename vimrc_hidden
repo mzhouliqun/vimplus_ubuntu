@@ -221,12 +221,21 @@ filetype plugin indent on                       " 打开文件类型检测,加�
 set completeopt=longest,menu
 
 " 显示tab和空格
-set list
+"set list
 
 " 设置tab和空格样式· ┆ ┊ ⋮ ⁞ ¦
 "set lcs=tab:\|\ ,nbsp:%,trail:-
 "set lcs=tab:\|\ ,nbsp:%,trail:_
-set lcs=tab:\⁞\ ,nbsp:%,trail:_
+"set lcs=tab:\·\ ,nbsp:%,trail:_
+
+" c文件和shell文件显示tab和空格
+augroup cprograms
+    autocmd!
+    autocmd BufRead,BufNewFile *.c,*.h,*.sh :set list
+augroup END
+
+autocmd BufRead,BufNewFile *.c,*.h,*.sh
+      \ setlocal lcs=tab:\⁞\ ,nbsp:%,trail:_
 
 " 鼠标设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
