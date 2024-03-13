@@ -1,0 +1,11 @@
+#!/bin/bash
+[ -d /home/code ] || mkdir -p /home/code
+cd /home/code
+[ -d /home/code/project$(date +%Y%m%d) ] || mkdir -p /home/code/project$(date +%Y%m%d)
+cd /home/code/project$(date +%Y%m%d)
+for mulu in {a..z}
+do
+	mkdir -p $mulu/da
+	touch $mulu/da/da.c
+done
+echo -e "\033[32mAll the directories and code files have been created!\033[0m"
