@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ x"$1" = x ]; then
-		echo "Usage: $0 [c|py]"
+		echo "Usage: $0 [c|p]"
 		exit 1
 fi
 
@@ -36,7 +36,7 @@ case $1 in
 c)
 	practice_env c $C_PRACTICE_PATH
 	;;
-py)
+p)
 	practice_env py $PYTHON_PRACTICE_PATH
 	;;
 *)
