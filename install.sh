@@ -55,7 +55,7 @@ unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
-\cp cf jr pw ycm nt /usr/local/bin/
+\cp cf jr fk pw ycm nt /usr/local/bin/
 for SCRIPT in cf jr pw ycm nt
 do
 	chmod +x /usr/local/bin/$SCRIPT

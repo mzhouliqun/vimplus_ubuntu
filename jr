@@ -1,11 +1,46 @@
 #!/bin/bash
-[ -d /home/code ] || mkdir -p /home/code
-cd /home/code
-[ -d /home/code/project$(date +%Y%m%d) ] || mkdir -p /home/code/project$(date +%Y%m%d)
-cd /home/code/project$(date +%Y%m%d)
-for mulu in {a..z}
-do
-	mkdir -p $mulu/da
-	touch $mulu/da/da.c
-done
-echo -e "\033[32mAll the directories and code files have been created!\033[0m"
+if [ x"$1" = x ]; then
+		echo "Usage: $0 [c|py]"
+		exit 1
+fi
+
+C_PRACTICE_PATH=/root/CLionProjects/c_language_practice/
+PYTHON_PRACTICE_PATH=/root/PycharmProjects/pachong/
+DATE_PATH=$(date +%Y%m%d)
+
+practice_env()
+{
+	[ -d ${2}${DATE_PATH} ] || mkdir -p ${2}${DATE_PATH}
+	cd ${2}${DATE_PATH}
+	FILE=$(ls -l | awk '{if(NR !=1) print $NF}' | awk -F '.' '{print $1}' | grep -v "[a-zA-Z]" | uniq | sort -nr | head -1)
+	if [ x"$FILE" = x ]
+	then
+		FILE_NAME=1.$1
+	else
+		FILE_NAME=$((FILE + 1)).$1
+	fi
+	if [ "$1" == "py" ]
+	then
+		echo "&!/usr/bin/python3" >> $FILE_NAME
+		sed -i 's/\&/\#/' $FILE_NAME
+	fi
+	if [ "$1" == "c" ]
+	then
+		echo "#include <stdio.h>" >> $FILE_NAME
+		echo "int main(void)" >> $FILE_NAME
+		echo "{" >> $FILE_NAME
+	fi
+}
+
+case $1 in
+c)
+	practice_env c $C_PRACTICE_PATH
+	;;
+py)
+	practice_env py $PYTHON_PRACTICE_PATH
+	;;
+*)
+	echo "参数不合法，仅支持 c | py"
+	exit 255
+	;;
+esac
