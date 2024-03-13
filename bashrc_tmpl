@@ -95,7 +95,8 @@ alias ml='cd /home/code/project$(date +%Y%m%d)'
 alias c='clear'
 alias python='python3'
 alias py='python'
-alias fk='source fk'
+alias fkc="cd /root/CLionProjects/c_language_practice/$(date +%Y%m%d)"
+alias fkp="cd /root/PycharmProjects/pachong/$(date +%Y%m%d)"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
