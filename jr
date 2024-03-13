@@ -40,7 +40,7 @@ p)
 	practice_env py $PYTHON_PRACTICE_PATH
 	;;
 *)
-	echo "参数不合法，仅支持 c | py"
+	echo "参数不合法，仅支持 c | p"
 	exit 255
 	;;
 esac
