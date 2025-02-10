@@ -231,7 +231,7 @@ set completeopt=longest,menu
 " c文件和shell文件显示tab和空格
 augroup cprograms
     autocmd!
-    autocmd BufRead,BufNewFile *.c,*.h,*.sh :set list
+    autocmd BufRead,BufNewFile *.c,*.h,*.sh :setlocal list
 augroup END
 
 autocmd BufRead,BufNewFile *.c,*.h,*.sh
