@@ -1,0 +1,88 @@
+#!/bin/bash
+#
+# Script Name: system_mode_switcher.sh
+# Purpose: Switch between graphical and multi-user (console) modes
+# Usage: Run directly without arguments
+# Note: Changes require reboot to take effect
+
+#
+# Script Name: mode_switcher.sh
+# purpose: switch between graphical and multi-user (console) modes
+# Usage: Run directly without arguments
+# Note: Changes require reboot to take effect
+
+check_graphical() {
+	local DEFAULT_TARGET
+	if ! DEFAULT_TARGET=$(systemctl get-default 2>/dev/null | tr -d '[:space:]'); then
+		echo "Error: Failed to get current system default target" >&2
+		return 2
+	fi
+
+	[ "$DEFAULT_TARGET" = "graphical.target" ]
+}
+
+switch_mode() {
+	local CURRENT_MODE NEW_MODE ANSWER
+
+	if check_graphical; then
+		CURRENT_MODE="graphical mode"
+		if ! systemctl set-default multi-user.target > /dev/null 2>&1; then
+			echo "Error: Failed to switch to multi-user mode" >&2
+			return 1
+		fi
+		NEW_MODE="multi-user (console) mode"
+
+	else
+		CURRENT_MODE="multi-user (console) mode"
+		if ! systemctl set-default graphical.target > /dev/null 2>&1; then
+			echo "Errof: Failed to switch to graphical mode" >&2
+			return 1
+		fi
+		NEW_MODE="graphical mode"
+	fi
+
+	echo "System is currently in ${CURRENT_MODE}"
+	echo "Successfully set to ${NEW_MODE}. A reboot is required for changes to take effect."
+	echo "Reboot now? [Y/N]"
+
+	read -r ANSWER
+	if [ "$ANSWER" = "y" ] || [ "$answer" = "Y" ]; then
+		shutdown -r now
+	fi
+}
+
+main() {
+	# Check if running as root
+	if [ "$(id -u)" -ne 0 ]; then
+		echo "Error: This script requires root privileges" >&2
+		return 1
+	fi
+
+	switch_mode
+}
+
+main "$@"
+
+# original version:
+
+#check_graphical() {
+#	local DEFAULT_TARGET
+#	DEFAULT_TARGET=$(systemctl get-default | tr -d '[:space:]')
+#	if [ "$DEFAULT_TARGET" = graphical.target ]; then
+#		return 0
+#	else
+#		return 1
+#	fi
+#}
+#
+#switch_mode(){
+#	if check_graphical; then
+#		systemctl set-default multi-user.target > /dev/null 2>&1
+#		echo "System is now set to multi-user mode, but it needs to be restarted to take effect."
+#	else
+#		systemctl set-default graphical.target > /dev/null 2>&1
+#		echo "System is now set to graphical mode, but it needs to be restarted to take effect."
+#	fi
+#}
+#
+#switch_mode
