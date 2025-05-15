@@ -3,8 +3,7 @@
 apt-get update
 apt-get install gcc g++ make cmake -y
 apt-get install vim vim-gtk3 vim-tiny neovim vim-athena vim-gtk vim-nox -y
-apt-get install curl git libncurses5-dev python-dev python3-dev build-essential cmake clang libclang-dev python3-pip -y
-apt-get install python-dev-is-python2 -y
+apt-get install curl git libncurses5-dev python3-dev build-essential cmake clang libclang-dev python3-pip -y
 
 FILENAME=/root/.vimrc
 STRING='\" YouCompleteMe'
@@ -23,4 +22,7 @@ then
 fi
 
 turnon $FILENAME
-echo '\033[32mFrom the vim command line, run the "PlugInstall" command to install YCM.\033[0m'
+echo '\033[32mExecute the ':PlugInstall' command in Vim command-line mode to install the YCM plugin, ignore the error message and exit Vim after execution.\033[0m'
+echo '\033[32mThen execute the following command on the shell command line:\033[0m'
+echo '\033[32mcd /root/.vim/plugged/YouCompleteMe\033[0m'
+echo '\033[32mpython3 install.py --clang-completer --force-sudo\033[0m'
