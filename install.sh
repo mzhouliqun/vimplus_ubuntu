@@ -1,4 +1,50 @@
 #!/bin/bash
+apt-get install universal-ctags curl git -y > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
+	exit 1
+fi
+
+curl -I https://github.com > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+	echo "\033[31mERROR! Unable to access github.com.\033[0m"
+	exit 2
+fi
+
+VIM_VERSION=$(echo `ls /usr/share/vim` | awk '{
+string=$0
+len=length(string)
+for (i=0; i<=len; i++)
+{
+tmp=substr(string, i, 1)
+if (tmp ~ /[0-9]/)
+{
+str=tmp
+str1=(str1 str)
+}
+}
+print str1
+}' |  awk '{
+for (i=1; i<=length($0); i+=1)
+printf substr($0,i,1)" "
+print ""}' | awk '{print $1}')
+if [ -z "$VIM_VERSION" ]; then
+	echo "\033[31mERROR! The VIM version number cannot be detected.\033[0m" && exit 3
+else
+	echo "\033[32mVim version number is $VIM_VERSION, check OK.\033[0m"
+fi
+
+BOOL_1=$(md5sum /etc/vim/vimrc | awk '{print $1}')
+BOOL_2=$(md5sum vimrc_global | awk '{print $1}')
+if [ "$BOOL_1"x = "$BOOL_2"x ]; then
+	echo "\033[32mThe file /etc/vim/vimrc has not been changed.\033[0m"
+else
+	\cp /etc/vim/vimrc /etc/vim/vimrc.$(date +%Y%m%d_%H%M).bak
+	\cp vimrc_global /etc/vim/vimrc
+fi
+
+\cp vimrc_hidden /root/.vimrc
+
 [ -d "~/.vim/" ] || mkdir -p ~/.vim/
 [ -d "~/.vim/doc/" ] || mkdir -p ~/.vim/doc/
 [ -d "~/.vim/plugin/" ] || mkdir -p ~/.vim/plugin/
