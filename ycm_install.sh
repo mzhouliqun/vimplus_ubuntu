@@ -25,4 +25,4 @@ turnon $FILENAME
 echo '\033[32mExecute the ':PlugInstall' command in Vim command-line mode to install the YCM plugin, ignore the error message and exit Vim after execution.\033[0m'
 echo '\033[32mThen execute the following command on the shell command line:\033[0m'
 echo '\033[32mcd /root/.vim/plugged/YouCompleteMe\033[0m'
-echo '\033[32mpython3 install.py --clang-completer --force-sudo\033[0m'
+echo '\033[32mpython3 install.py --clang-completer --force-sudo --verbose\033[0m'

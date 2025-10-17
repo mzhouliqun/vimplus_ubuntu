@@ -1,0 +1,27 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+        echo "Usage: $0 [filename1] [filename2] ..."
+        exit 1
+fi
+
+DATESTRING=$(date +%Y%m%d)
+DESPATH=bak
+
+nz()
+{
+        local filename="$1"
+        if [ ! -e "$filename" ]; then
+            echo "错误: 文件 '$filename' 不存在"
+            return 1
+        fi
+        
+        mv -v "$filename" "${DESPATH}/${filename}_${DATESTRING}.bak"
+        echo "已备份: $filename -> ${DESPATH}/${filename}_${DATESTRING}.bak"
+}
+
+mkdir -p "$DESPATH"
+
+# 处理所有参数
+for file in "$@"; do
+    nz "$file"
+done

@@ -295,9 +295,9 @@ map! <C-A> <Esc>ggVGY
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y
 
-" 用vim打开一个临时窗口,gt和gT标签页间切换
-map <F3> :tabnew /tmp/temp.txt<CR>
-map! <F3> <Esc>:tabnew /tmp/temp.txt<CR>
+"" 用vim打开一个临时窗口,gt和gT标签页间切换
+"map <F3> :tabnew /tmp/temp.txt<CR>
+"map! <F3> <Esc>:tabnew /tmp/temp.txt<CR>
 
 " 插入模式下ctrl+d删除整行
 imap <c-d> <esc>ddi
@@ -362,12 +362,15 @@ let Tlist_Ctags_Cmd="/usr/bin/ctags"            "将taglist与ctags关联
 let Tlist_Use_Right_Window=1                    "taglist窗口的位置
 "let Tlist_WinHeight=100                        "taglist窗口的高度,测试没效果
 let Tlist_WinWidth=40                           "taglist窗口的宽度
-map <F12> :Tlist<CR>
-map! <F12> <Esc>:Tlist<CR>a
+map <F3> :Tlist<CR>
+map! <F3> <Esc>:Tlist<CR>a
 "autocmd vimenter * Tlist
 
 " 打开C文件时自动开启Taglist
 "autocmd VimEnter *.c Tlist
+
+" 打开python文件时自动开启Taglist
+"autocmd VimEnter *.py Tlist
 
 " 打开H文件时自动开启Taglist
 "autocmd VimEnter *.h Tlist
@@ -397,6 +400,11 @@ map <F7> :NERDTreeToggle<CR>
 "autocmd VimEnter *.h NERDTree
 "wincmd w
 "autocmd VimEnter *.h wincmd w
+
+" 打开python文件时自动开启NERDTree
+"autocmd VimEnter *.py NERDTree
+"wincmd w
+"autocmd VimEnter *.py wincmd w
 
 " 当NERDTree为剩下的唯一窗口时自动关闭
 "autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

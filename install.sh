@@ -55,8 +55,8 @@ unzip -d ./temp/taglist_46 -o taglist_46.zip > /dev/null 2>&1
 \cp molokai.vim /usr/share/vim/vim${VIM_VERSION}*/colors/
 
 # Additional configuration
-\cp cf jr pw ycm nt mode_switcher /usr/local/bin/
-for SCRIPT in cf jr pw ycm nt mode_switcher
+\cp cf jr pw ycm nt bk mode_switcher /usr/local/bin/
+for SCRIPT in cf jr pw ycm nt bk mode_switcher
 do
 	chmod +x /usr/local/bin/$SCRIPT
 done
