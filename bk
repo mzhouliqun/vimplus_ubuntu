@@ -4,7 +4,7 @@ if [ $# -eq 0 ]; then
         exit 1
 fi
 
-DATESTRING=$(date +%Y%m%d)
+DATESTRING=$(date +%Y%m%d_%H%M%S)
 DESPATH=bak
 
 nz()
