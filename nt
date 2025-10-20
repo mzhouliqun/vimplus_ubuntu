@@ -5,12 +5,14 @@ STRING='autocmd\ VimEnter\ \*\.c\ Tlist'
 
 turnon() {
 	sed -i '/^\"autocmd\ VimEnter\ \*\.[ch]/s/\"//g' $1
+	sed -i '/^\"autocmd\ VimEnter\ \*\.py/s/\"//g' $1
 	sed -i '/^\"wincmd\ w/s/\"//g' $1
 	sed -i '/\tif\ winbufnr(2)\ ==\ -1/s/2/3/g' $2
 }
 
 turnoff() {
 	sed -i 's/^autocmd\ VimEnter\ \*\.[ch]/\"&/g' $1
+	sed -i 's/^autocmd\ VimEnter\ \*\.py/\"&/g' $1
 	sed -i 's/^wincmd\ w/\"&/g' $1
 	sed -i '/\tif\ winbufnr(3)\ ==\ -1/s/3/2/g' $2
 }
