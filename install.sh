@@ -1,5 +1,5 @@
 #!/bin/bash
-apt-get install universal-ctags curl git -y > /dev/null 2>&1
+apt-get install universal-ctags curl git unzip -y > /dev/null 2>&1
 if [ "$?" != "0" ]; then
 	echo "\033[31mERROR! The required package cannot be installed.\033[0m"
 	exit 1
