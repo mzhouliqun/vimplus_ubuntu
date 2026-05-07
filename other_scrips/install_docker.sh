@@ -244,9 +244,9 @@ main() {
     add_docker_repo
     install_docker
     start_docker_service
-    verify_installation
+#    verify_installation
     configure_user_permissions
-    configure_mirror
+#    configure_mirror
     show_summary
 }
 

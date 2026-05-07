@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # 默认值
-DEFAULT_IP="10.7.236.189"
-DEFAULT_PORT="7890"
+DEFAULT_IP="127.0.0.1"
+DEFAULT_PORT="1080"
 
 # 初始化变量
 PROXY_IP="$DEFAULT_IP"
