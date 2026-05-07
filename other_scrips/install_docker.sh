@@ -173,9 +173,7 @@ configure_mirror() {
         cat <<EOF | sudo tee /etc/docker/daemon.json > /dev/null
 {
   "registry-mirrors": [
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://hub-mirror.c.163.com",
-    "https://mirror.baidubce.com"
+    "https://docker.1ms.run"
   ],
   "log-driver": "json-file",
   "log-opts": {
@@ -244,9 +242,9 @@ main() {
     add_docker_repo
     install_docker
     start_docker_service
-#    verify_installation
+    verify_installation
     configure_user_permissions
-#    configure_mirror
+    configure_mirror
     show_summary
 }
 
